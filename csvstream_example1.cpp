@@ -17,12 +17,12 @@ int main() {
   // Open file
   csvstream csvin("csvstream_example.csv");
 
-  // Rows have key = column name, value = cell datum
-  map<string, string> row;
+  // vector a pair, which have key = column name, value = cell datum
+  vector<pair<string, string>> row;
 
   // Extract the "animal" column
   while (csvin >> row) {
-    cout << row["animal"] << "\n";
+    cout << row[1].second << "\n"; // print only the values in the second col
   }
 
 }

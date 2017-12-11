@@ -33,7 +33,7 @@ public:
   typedef std::vector<std::string> header_type;
 
   // A row is a map of (column name, datum) pairs from one row
-  typedef std::map<std::string, std::string> row_type;
+  typedef std::vector<std::pair<std::string, std::string>> row_type;
 
   // Constructor from filename
   csvstream(const std::string &filename, char delimiter=',');
@@ -240,7 +240,7 @@ csvstream & csvstream::operator>> (row_type& row) {
 
   // combine data and header into a row object
   for (size_t i=0; i<data.size(); ++i) {
-    row[header[i]] = data[i];
+    row.push_back({header[i], data[i]});
   }
 
   return *this;
